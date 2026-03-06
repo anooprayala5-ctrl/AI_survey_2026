@@ -1,0 +1,1209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Conversational AI Survey 2026 — Motilal Oswal</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+/* ══ RESET ════════════════════════════════════════════════════ */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --navy:   #0D1B3E;
+  --blue1:  #1A3A72;
+  --blue2:  #1E5FA8;
+  --blue3:  #2980D9;
+  --blue4:  #5BA3E8;
+  --blue5:  #A8CDEF;
+  --blue6:  #D6E8F7;
+  --blue7:  #EBF4FC;
+  --white:  #FFFFFF;
+  --gray1:  #F4F6FA;
+  --gray2:  #E8EDF5;
+  --gray3:  #C8D3E5;
+  --gray4:  #8A9BB8;
+  --gray5:  #4A5878;
+  --gray6:  #2A3550;
+  --gold:   #C9A84C;
+  --goldl:  #E8C96A;
+  --rose:   #C04A55;
+  --sage:   #2E8B6A;
+  --r:      10px;
+  --shadow: 0 2px 12px rgba(13,27,62,0.08);
+  --shadow2:0 4px 24px rgba(13,27,62,0.13);
+}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:var(--gray1);color:var(--navy);line-height:1.5;min-height:100vh}
+
+/* ══ HEADER ═══════════════════════════════════════════════════ */
+.header{
+  background:var(--navy);
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 40px;height:68px;
+  position:sticky;top:0;z-index:200;
+  border-bottom:3px solid var(--blue2);
+  box-shadow:0 2px 20px rgba(0,0,0,0.25);
+}
+.header-logo img{height:38px;display:block;border-radius:4px}
+.header-title{
+  font-family:'Playfair Display',serif;
+  font-size:18px;font-weight:600;color:var(--white);
+  letter-spacing:0.2px;text-align:center;
+  flex:1;padding:0 24px;
+}
+.header-title span{color:var(--blue4);font-style:italic}
+.header-meta{
+  font-family:'JetBrains Mono',monospace;
+  font-size:10px;color:var(--gray4);
+  text-align:right;line-height:1.6;
+}
+
+/* ══ TAB NAV ══════════════════════════════════════════════════ */
+.tabnav{
+  background:var(--blue1);
+  display:flex;overflow-x:auto;
+  padding:0 32px;
+  scrollbar-width:none;
+  position:sticky;top:68px;z-index:190;
+  border-bottom:1px solid rgba(255,255,255,0.08);
+}
+.tabnav::-webkit-scrollbar{display:none}
+.tab-btn{
+  font-family:'Inter',sans-serif;
+  font-size:11.5px;font-weight:500;
+  color:rgba(255,255,255,0.5);
+  padding:0 18px;height:46px;
+  border:none;background:none;cursor:pointer;
+  white-space:nowrap;
+  border-bottom:3px solid transparent;
+  transition:all 0.2s;
+  display:flex;align-items:center;gap:6px;
+}
+.tab-btn:hover{color:rgba(255,255,255,0.85)}
+.tab-btn.active{
+  color:var(--white);
+  border-bottom-color:var(--blue4);
+  background:rgba(255,255,255,0.06);
+}
+.tab-num{
+  font-family:'JetBrains Mono',monospace;
+  font-size:9px;color:var(--blue4);
+  background:rgba(91,163,232,0.15);
+  padding:2px 5px;border-radius:3px;
+}
+
+/* ══ PANELS ═══════════════════════════════════════════════════ */
+.panel{display:none;padding:36px 40px 60px;max-width:1200px;margin:0 auto}
+.panel.active{display:block}
+
+/* ══ SECTION HEADER ═══════════════════════════════════════════ */
+.panel-header{
+  display:flex;align-items:flex-end;justify-content:space-between;
+  margin-bottom:28px;padding-bottom:16px;
+  border-bottom:2px solid var(--gray2);
+}
+.panel-header-left{}
+.panel-eyebrow{
+  font-family:'JetBrains Mono',monospace;
+  font-size:10px;letter-spacing:2px;
+  color:var(--blue3);text-transform:uppercase;
+  margin-bottom:6px;
+}
+.panel-title{
+  font-family:'Playfair Display',serif;
+  font-size:26px;font-weight:700;color:var(--navy);
+  letter-spacing:-0.3px;
+}
+.panel-question{
+  font-size:13px;color:var(--gray4);
+  font-style:italic;margin-top:4px;
+}
+.panel-n{
+  font-family:'JetBrains Mono',monospace;
+  font-size:11px;color:var(--gray4);
+  background:var(--gray2);
+  padding:6px 12px;border-radius:6px;
+  white-space:nowrap;
+}
+
+/* ══ GRID UTILS ════════════════════════════════════════════════ */
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:18px}
+.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.g5{display:grid;grid-template-columns:repeat(5,1fr);gap:14px}
+.gc2{grid-column:span 2}
+.gc3{grid-column:span 3}
+.gwide{grid-template-columns:3fr 2fr}
+.gthin{grid-template-columns:2fr 3fr}
+
+/* ══ KPI CARD ═════════════════════════════════════════════════ */
+.kpi{
+  background:var(--white);
+  border-radius:var(--r);
+  border:1px solid var(--gray2);
+  padding:22px 20px 18px;
+  position:relative;overflow:hidden;
+  box-shadow:var(--shadow);
+  transition:transform 0.2s,box-shadow 0.2s;
+}
+.kpi:hover{transform:translateY(-2px);box-shadow:var(--shadow2)}
+.kpi::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:3px;
+}
+.kpi.c-blue1::before{background:var(--blue2)}
+.kpi.c-blue2::before{background:var(--blue3)}
+.kpi.c-blue3::before{background:var(--blue4)}
+.kpi.c-navy::before{background:var(--navy)}
+.kpi.c-gold::before{background:var(--gold)}
+.kpi.c-rose::before{background:var(--rose)}
+.kpi.c-sage::before{background:var(--sage)}
+.kpi-num{
+  font-family:'Playfair Display',serif;
+  font-size:46px;line-height:1;font-weight:700;
+  letter-spacing:-1.5px;margin-bottom:6px;
+}
+.kpi.c-blue1 .kpi-num{color:var(--blue2)}
+.kpi.c-blue2 .kpi-num{color:var(--blue3)}
+.kpi.c-blue3 .kpi-num{color:var(--blue4)}
+.kpi.c-navy  .kpi-num{color:var(--navy)}
+.kpi.c-gold  .kpi-num{color:var(--gold)}
+.kpi.c-rose  .kpi-num{color:var(--rose)}
+.kpi.c-sage  .kpi-num{color:var(--sage)}
+.kpi-label{font-size:12px;color:var(--gray5);font-weight:500;line-height:1.4}
+.kpi-sub{font-size:11px;color:var(--gray4);margin-top:4px}
+.kpi-bg{
+  position:absolute;right:-10px;bottom:-14px;
+  font-family:'Playfair Display',serif;
+  font-size:72px;font-weight:700;opacity:0.04;
+  color:var(--navy);line-height:1;pointer-events:none;
+}
+
+/* ══ CARD ══════════════════════════════════════════════════════ */
+.card{
+  background:var(--white);border-radius:var(--r);
+  border:1px solid var(--gray2);box-shadow:var(--shadow);
+  overflow:hidden;
+  transition:transform 0.2s,box-shadow 0.2s;
+}
+.card:hover{transform:translateY(-2px);box-shadow:var(--shadow2)}
+.card-body{padding:24px}
+.card-label{
+  font-family:'JetBrains Mono',monospace;
+  font-size:9.5px;letter-spacing:1.5px;
+  text-transform:uppercase;color:var(--gray4);
+  margin-bottom:16px;
+}
+
+/* ══ BAR CHART ════════════════════════════════════════════════ */
+.bar-row{display:flex;align-items:center;gap:10px;margin-bottom:13px}
+.bar-row:last-child{margin-bottom:0}
+.bar-lbl{font-size:12.5px;color:var(--gray5);min-width:190px;flex-shrink:0}
+.bar-lbl.w120{min-width:120px}
+.bar-lbl.w150{min-width:150px}
+.bar-lbl.w220{min-width:220px}
+.bar-track{flex:1;height:10px;background:var(--gray2);border-radius:100px;overflow:hidden}
+.bar-fill{height:100%;border-radius:100px;animation:growBar 1s cubic-bezier(.16,1,.3,1) both}
+@keyframes growBar{from{width:0!important}}
+.bar-fill.f-navy {background:var(--navy)}
+.bar-fill.f-blue1{background:var(--blue2)}
+.bar-fill.f-blue2{background:var(--blue3)}
+.bar-fill.f-blue3{background:var(--blue4)}
+.bar-fill.f-blue4{background:var(--blue5)}
+.bar-fill.f-gold {background:var(--gold)}
+.bar-fill.f-rose {background:var(--rose)}
+.bar-fill.f-sage {background:var(--sage)}
+.bar-fill.f-gray {background:var(--gray3)}
+.bar-pct{font-family:'JetBrains Mono',monospace;font-size:11.5px;font-weight:600;color:var(--navy);min-width:38px;text-align:right}
+.bar-count{font-size:11px;color:var(--gray4);min-width:52px;text-align:right}
+
+/* ══ DONUT ════════════════════════════════════════════════════ */
+.donut-wrap{display:flex;align-items:center;gap:28px}
+.donut-legend{flex:1}
+.donut-li{display:flex;align-items:center;gap:9px;margin-bottom:9px;font-size:12.5px;color:var(--gray5)}
+.donut-li:last-child{margin-bottom:0}
+.donut-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0}
+.donut-pct{margin-left:auto;font-family:'JetBrains Mono',monospace;font-size:11.5px;font-weight:700;color:var(--navy)}
+
+/* ══ PIE CHART (SVG multi-slice) ══════════════════════════════ */
+/* built inline per chart */
+
+/* ══ SCORE BAR ════════════════════════════════════════════════ */
+.score-wrap{text-align:center}
+.score-big{
+  font-family:'Playfair Display',serif;
+  font-size:64px;line-height:1;font-weight:700;
+  letter-spacing:-2px;margin-bottom:4px;
+}
+.score-denom{font-size:16px;color:var(--gray4);font-weight:400}
+.score-bar-track{height:8px;background:var(--gray2);border-radius:100px;overflow:hidden;margin:10px 0 6px}
+.score-bar-fill{height:100%;border-radius:100px}
+.score-note{font-size:11px;color:var(--gray4)}
+
+/* ══ WATERFALL ════════════════════════════════════════════════ */
+.wfall{display:flex;gap:8px;align-items:flex-end;height:140px;padding:0 4px;margin-top:12px}
+.wc{flex:1;display:flex;flex-direction:column;align-items:center;gap:5px;height:100%;justify-content:flex-end}
+.wb{width:100%;border-radius:5px 5px 0 0;animation:growUp 1s cubic-bezier(.16,1,.3,1) both}
+@keyframes growUp{from{height:0!important}}
+.wv{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;color:var(--navy)}
+.wl{font-size:10.5px;color:var(--gray4);text-align:center}
+
+/* ══ HIGHLIGHT BAND ═══════════════════════════════════════════ */
+.band{
+  background:var(--navy);border-radius:var(--r);
+  padding:36px 44px;display:flex;align-items:center;gap:44px;
+  position:relative;overflow:hidden;
+  box-shadow:var(--shadow2);
+}
+.band::after{
+  content:'';position:absolute;right:-80px;top:-80px;
+  width:300px;height:300px;border-radius:50%;
+  background:rgba(91,163,232,0.07);
+}
+.band-num{
+  font-family:'Playfair Display',serif;
+  font-size:80px;line-height:1;font-weight:700;
+  color:var(--blue4);letter-spacing:-2px;flex-shrink:0;
+}
+.band-title{
+  font-family:'Playfair Display',serif;
+  font-size:22px;color:var(--white);margin-bottom:8px;
+}
+.band-desc{font-size:13.5px;color:rgba(255,255,255,0.5);line-height:1.7;max-width:500px}
+.band-stats{display:flex;gap:28px;margin-top:16px;flex-wrap:wrap}
+.band-s{display:flex;flex-direction:column;gap:2px}
+.band-s .v{font-family:'Playfair Display',serif;font-size:26px;color:var(--goldl)}
+.band-s .l{font-family:'JetBrains Mono',monospace;font-size:9px;color:rgba(255,255,255,0.35);letter-spacing:1px;text-transform:uppercase}
+
+/* ══ INSIGHT BOX ══════════════════════════════════════════════ */
+.insight{
+  background:var(--blue1);border-radius:var(--r);
+  padding:22px 26px;display:flex;gap:16px;align-items:flex-start;
+  margin-top:18px;
+}
+.insight-ico{
+  width:38px;height:38px;background:rgba(91,163,232,0.18);
+  border-radius:8px;display:flex;align-items:center;
+  justify-content:center;font-size:17px;flex-shrink:0;
+}
+.insight-title{font-size:12px;font-weight:600;color:var(--goldl);margin-bottom:5px;letter-spacing:0.3px}
+.insight-text{font-size:13px;color:rgba(255,255,255,0.6);line-height:1.7}
+
+/* ══ TAGS ═════════════════════════════════════════════════════ */
+.tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:14px}
+.tag{padding:4px 11px;border-radius:100px;font-size:11px;font-weight:500}
+.tag.t-blue{background:rgba(41,128,217,0.1);color:var(--blue2);border:1px solid rgba(41,128,217,0.2)}
+.tag.t-navy{background:rgba(13,27,62,0.07);color:var(--navy);border:1px solid rgba(13,27,62,0.14)}
+.tag.t-gold{background:rgba(201,168,76,0.1);color:#96720a;border:1px solid rgba(201,168,76,0.25)}
+.tag.t-rose{background:rgba(192,74,85,0.08);color:var(--rose);border:1px solid rgba(192,74,85,0.18)}
+.tag.t-sage{background:rgba(46,139,106,0.1);color:var(--sage);border:1px solid rgba(46,139,106,0.2)}
+
+/* ══ MINI OVERVIEW GRID ═══════════════════════════════════════ */
+.ov-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:10px}
+.ov-cell{
+  background:var(--white);border-radius:8px;border:1px solid var(--gray2);
+  padding:16px;text-align:center;
+}
+.ov-cell-val{font-family:'Playfair Display',serif;font-size:30px;font-weight:700}
+.ov-cell-lbl{font-size:11px;color:var(--gray4);margin-top:3px}
+
+/* ══ QUOTE ════════════════════════════════════════════════════ */
+.quote-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin-top:14px}
+.quote-card{
+  background:var(--white);border-radius:var(--r);border:1px solid var(--gray2);
+  padding:20px;position:relative;box-shadow:var(--shadow);
+}
+.quote-mark{
+  font-family:'Playfair Display',serif;font-size:56px;
+  color:var(--blue4);opacity:0.18;
+  position:absolute;top:6px;left:14px;line-height:1;
+}
+.quote-text{font-size:12.5px;color:var(--gray5);line-height:1.7;padding-top:18px;position:relative;z-index:1}
+
+/* ══ INLINE EDIT SYSTEM ═══════════════════════════════════════ */
+.edit-controls{
+  position:fixed;bottom:28px;right:28px;
+  display:flex;flex-direction:column;gap:8px;
+  z-index:300;
+}
+.edit-btn{
+  display:flex;align-items:center;gap:8px;
+  padding:10px 18px;border-radius:8px;border:none;
+  font-family:'Inter',sans-serif;font-size:13px;font-weight:600;
+  cursor:pointer;transition:all 0.2s;box-shadow:var(--shadow2);
+  white-space:nowrap;
+}
+.edit-btn-toggle{background:var(--navy);color:var(--white)}
+.edit-btn-toggle:hover{background:var(--blue1)}
+.edit-btn-save{background:var(--sage);color:var(--white);display:none}
+.edit-btn-save:hover{background:#226b52}
+.edit-btn-reset{background:var(--gray2);color:var(--gray5);display:none;font-size:12px;padding:8px 14px}
+.edit-mode-on .edit-btn-toggle{background:var(--blue2);color:var(--white)}
+.edit-mode-on .edit-btn-save{display:flex}
+.edit-mode-on .edit-btn-reset{display:flex}
+[contenteditable="true"]{
+  outline:none;border-radius:4px;cursor:text;
+  border:1.5px dashed transparent;
+  transition:border-color 0.15s,background 0.15s;
+  padding:1px 3px;
+}
+[contenteditable="true"]:hover{border-color:var(--blue3);background:rgba(41,128,217,0.04)}
+[contenteditable="true"]:focus{border-color:var(--blue2);background:rgba(41,128,217,0.07)}
+.edit-hint{
+  position:fixed;bottom:28px;left:28px;
+  background:var(--blue1);color:rgba(255,255,255,0.7);
+  padding:8px 14px;border-radius:8px;font-size:12px;
+  display:none;box-shadow:var(--shadow2);z-index:300;
+}
+body.edit-mode-on .edit-hint{display:block}
+
+/* ══ TOAST ════════════════════════════════════════════════════ */
+.toast{
+  position:fixed;bottom:90px;right:28px;
+  background:var(--sage);color:white;
+  padding:10px 18px;border-radius:8px;font-size:13px;font-weight:600;
+  box-shadow:var(--shadow2);z-index:400;
+  opacity:0;transform:translateY(10px);
+  transition:opacity 0.3s,transform 0.3s;pointer-events:none;
+}
+.toast.show{opacity:1;transform:none}
+
+/* ══ RESPONSIVE ═══════════════════════════════════════════════ */
+@media(max-width:900px){
+  .g4,.g5{grid-template-columns:1fr 1fr}
+  .g3{grid-template-columns:1fr 1fr}
+  .g2.gwide,.g2.gthin{grid-template-columns:1fr}
+  .quote-grid{grid-template-columns:1fr}
+  .ov-grid{grid-template-columns:1fr 1fr}
+  .band{flex-direction:column;padding:28px}
+  .panel{padding:24px 16px 48px}
+  .tabnav{padding:0 12px}
+  .header{padding:0 16px}
+  .header-title{font-size:14px}
+}
+</style>
+</head>
+<body>
+
+<!-- ══ HEADER ══════════════════════════════════════════════════ -->
+<header class="header">
+  <div class="header-logo">
+    <img src="data:image/jpeg;base64,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" alt="Motilal Oswal Wealth Management">
+  </div>
+  <div class="header-title">Conversational <span>AI</span> Survey — Leadership Intelligence Report</div>
+  <div class="header-meta">34 Respondents<br>Feb 20–27, 2026</div>
+</header>
+
+<!-- ══ TAB NAV ═════════════════════════════════════════════════ -->
+<nav class="tabnav" id="tabnav">
+  <button class="tab-btn active" data-tab="t0"><span class="tab-num">00</span>Overview</button>
+  <button class="tab-btn" data-tab="t1"><span class="tab-num">01</span>Review Habits</button>
+  <button class="tab-btn" data-tab="t2"><span class="tab-num">02</span>Recall Gaps</button>
+  <button class="tab-btn" data-tab="t3"><span class="tab-num">03</span>Belief & Adjustment</button>
+  <button class="tab-btn" data-tab="t4"><span class="tab-num">04</span>AI Adoption</button>
+  <button class="tab-btn" data-tab="t5"><span class="tab-num">05</span>Performance Scores</button>
+  <button class="tab-btn" data-tab="t6"><span class="tab-num">06</span>Conversion & Quality</button>
+  <button class="tab-btn" data-tab="t7"><span class="tab-num">07</span>Cross-Sell</button>
+  <button class="tab-btn" data-tab="t8"><span class="tab-num">08</span>Concerns</button>
+  <button class="tab-btn" data-tab="t9"><span class="tab-num">09</span>Productivity Impact</button>
+  <button class="tab-btn" data-tab="t10"><span class="tab-num">10</span>Suggestions</button>
+</nav>
+
+<!-- ══ TOAST ═══════════════════════════════════════════════════ -->
+<div class="toast" id="toast">✓ Changes saved to this browser</div>
+
+<!-- ══ EDIT CONTROLS ══════════════════════════════════════════ -->
+<div class="edit-controls" id="editControls">
+  <button class="edit-btn edit-btn-toggle" id="editToggle" onclick="toggleEdit()">
+    <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+    Edit Mode
+  </button>
+  <button class="edit-btn edit-btn-save" onclick="saveEdits()">
+    <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 21H5a2 2 0 01-2-2V5a2 2 0 012-2h11l5 5v11a2 2 0 01-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>
+    Save Changes
+  </button>
+  <button class="edit-btn edit-btn-reset" onclick="resetEdits()">↩ Reset All</button>
+</div>
+<div class="edit-hint">✏ Click any text to edit — changes auto-save to browser storage</div>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- TAB 00: OVERVIEW                                            -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<div class="panel active" id="t0">
+  <div class="panel-header">
+    <div class="panel-header-left">
+      <div class="panel-eyebrow">00 · Executive Overview</div>
+      <div class="panel-title">Leadership Dashboard — All Metrics at a Glance</div>
+      <div class="panel-question">Comprehensive summary across all 17 survey questions · 34 respondents · Feb 2026</div>
+    </div>
+    <div class="panel-n">n = 34</div>
+  </div>
+
+  <!-- Row 1: Top 5 KPIs -->
+  <div class="g5" style="margin-bottom:18px">
+    <div class="kpi c-blue1">
+      <div class="kpi-num">94%</div>
+      <div class="kpi-label">Review past conversations before meetings</div>
+      <div class="kpi-sub">32 of 34 respondents</div>
+      <div class="kpi-bg">94</div>
+    </div>
+    <div class="kpi c-blue2">
+      <div class="kpi-num">65%</div>
+      <div class="kpi-label">Have used the AI summary tool</div>
+      <div class="kpi-sub">22 of 34 respondents</div>
+      <div class="kpi-bg">65</div>
+    </div>
+    <div class="kpi c-navy">
+      <div class="kpi-num">100%</div>
+      <div class="kpi-label">Believe better recall improves outcomes</div>
+      <div class="kpi-sub">All 34 respondents</div>
+      <div class="kpi-bg">100</div>
+    </div>
+    <div class="kpi c-gold">
+      <div class="kpi-num">7.5</div>
+      <div class="kpi-label">Average AI accuracy score</div>
+      <div class="kpi-sub">Rated by 22 AI users /10</div>
+      <div class="kpi-bg">7.5</div>
+    </div>
+    <div class="kpi c-blue3">
+      <div class="kpi-num">94%</div>
+      <div class="kpi-label">Moderate–high productivity impact if removed</div>
+      <div class="kpi-sub">32 of 34 respondents</div>
+      <div class="kpi-bg">94</div>
+    </div>
+  </div>
+
+  <!-- Row 2: Two-column summary charts -->
+  <div class="g2" style="margin-bottom:18px">
+    <div class="card">
+      <div class="card-body">
+        <div class="card-label">Missed Opportunity Frequency (Q4)</div>
+        <div class="bar-row"><div class="bar-lbl w150">Rarely miss</div><div class="bar-track"><div class="bar-fill f-blue1" style="width:53%"></div></div><div class="bar-pct">53%</div><div class="bar-count">18 of 34</div></div>
+        <div class="bar-row"><div class="bar-lbl w150">Sometimes miss</div><div class="bar-track"><div class="bar-fill f-gold" style="width:38%"></div></div><div class="bar-pct">38%</div><div class="bar-count">13 of 34</div></div>
+        <div class="bar-row"><div class="bar-lbl w150">Never miss</div><div class="bar-track"><div class="bar-fill f-sage" style="width:9%"></div></div><div class="bar-pct">9%</div><div class="bar-count">3 of 34</div></div>
+        <div class="bar-row"><div class="bar-lbl w150">Often miss</div><div class="bar-track"><div class="bar-fill f-rose" style="width:0%"></div></div><div class="bar-pct">0%</div><div class="bar-count">0 of 34</div></div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-body">
+        <div class="card-label">Top Recall Blind Spots (Q5) — multi-select</div>
+        <div class="bar-row"><div class="bar-lbl w150">Investment Risk</div><div class="bar-track"><div class="bar-fill f-navy" style="width:41%"></div></div><div class="bar-pct">41%</div><div class="bar-count">14 of 34</div></div>
+        <div class="bar-row"><div class="bar-lbl w150">Life Events</div><div class="bar-track"><div class="bar-fill f-blue1" style="width:26%"></div></div><div class="bar-pct">26%</div><div class="bar-count">9 of 34</div></div>
+        <div class="bar-row"><div class="bar-lbl w150">Past Products</div><div class="bar-track"><div class="bar-fill f-blue2" style="width:24%"></div></div><div class="bar-pct">24%</div><div class="bar-count">8 of 34</div></div>
+        <div class="bar-row"><div class="bar-lbl w150">Objections</div><div class="bar-track"><div class="bar-fill f-blue3" style="width:21%"></div></div><div class="bar-pct">21%</div><div class="bar-count">7 of 34</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Row 3: Scores row -->
+  <div class="g4" style="margin-bottom:18px">
+    <div class="card">
+      <div class="card-body" style="text-align:center">
+        <div class="card-label">AI Accuracy (Q9)</div>
+        <div class="score-big" style="color:var(--blue2)">7.5<span class="score-denom">/10</span></div>
+        <div class="score-bar-track"><div class="score-bar-fill" style="width:75%;background:var(--blue2)"></div></div>
+        <div class="score-note">22 AI tool users</div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-body" style="text-align:center">
+        <div class="card-label">Personalisation (Q10)</div>
+        <div class="score-big" style="color:var(--blue3)">7.3<span class="score-denom">/10</span></div>
+        <div class="score-bar-track"><div class="score-bar-fill" style="width:73%;background:var(--blue3)"></div></div>
+        <div class="score-note">21 AI tool users</div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-body" style="text-align:center">
+        <div class="card-label">Comfort / Trust (Q12)</div>
+        <div class="score-big" style="color:var(--blue4)">6.9<span class="score-denom">/10</span></div>
+        <div class="score-bar-track"><div class="score-bar-fill" style="width:69%;background:var(--blue4)"></div></div>
+        <div class="score-note">22 AI tool users</div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-body" style="text-align:center">
+        <div class="card-label">Client Engagement (Q14)</div>
+        <div class="score-big" style="color:var(--navy)">7.1<span class="score-denom">/10</span></div>
+        <div class="score-bar-track"><div class="score-bar-fill" style="width:71%;background:var(--navy)"></div></div>
+        <div class="score-note">33 respondents</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Row 4: Concerns + Conversion + Cross-sell -->
+  <div class="g3" style="margin-bottom:18px">
+    <div class="card">
+      <div class="card-body">
+        <div class="card-label">Top Concerns (Q16) — multi-select</div>
+        <div class="bar-row"><div class="bar-lbl w120">Accuracy</div><div class="bar-track"><div class="bar-fill f-rose" style="width:41%"></div></div><div class="bar-pct">41%</div></div>
+        <div class="bar-row"><div class="bar-lbl w120">No Concerns</div><div class="bar-track"><div class="bar-fill f-sage" style="width:41%"></div></div><div class="bar-pct">41%</div></div>
+        <div class="bar-row"><div class="bar-lbl w120">Over-dependence</div><div class="bar-track"><div class="bar-fill f-gold" style="width:35%"></div></div><div class="bar-pct">35%</div></div>
+        <div class="bar-row"><div class="bar-lbl w120">Data Privacy</div><div class="bar-track"><div class="bar-fill f-blue1" style="width:29%"></div></div><div class="bar-pct">29%</div></div>
+        <div class="bar-row"><div class="bar-lbl w120">Compliance</div><div class="bar-track"><div class="bar-fill f-gray" style="width:15%"></div></div><div class="bar-pct">15%</div></div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-body">
+        <div class="card-label">Conversion Rate Change (Q11) — AI users only</div>
+        <div style="display:flex;gap:12px;margin-top:8px">
+          <div style="flex:1;text-align:center;background:rgba(41,128,217,0.07);border-radius:8px;padding:16px 8px">
+            <div style="font-family:'Playfair Display',serif;font-size:36px;color:var(--blue2);font-weight:700">32%</div>
+            <div style="font-size:11px;color:var(--gray4);margin-top:4px">Significantly improved</div>
+          </div>
+          <div style="flex:1;text-align:center;background:rgba(41,128,217,0.04);border-radius:8px;padding:16px 8px">
+            <div style="font-family:'Playfair Display',serif;font-size:36px;color:var(--blue3);font-weight:700">68%</div>
+            <div style="font-size:11px;color:var(--gray4);margin-top:4px">Slightly improved</div>
+          </div>
+        </div>
+        <div class="tags"><span class="tag t-sage">100% positive impact among 22 AI users</span></div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-body">
+        <div class="card-label">Cross-sell / Upsell (Q15)</div>
+        <div style="display:flex;gap:10px;margin-top:8px">
+          <div style="flex:1;text-align:center;background:rgba(13,27,62,0.05);border-radius:8px;padding:14px 6px">
+            <div style="font-family:'Playfair Display',serif;font-size:30px;color:var(--navy);font-weight:700">47%</div>
+            <div style="font-size:10px;color:var(--gray4);margin-top:3px">Yes, seen increase</div>
+          </div>
+          <div style="flex:1;text-align:center;background:rgba(201,168,76,0.07);border-radius:8px;padding:14px 6px">
+            <div style="font-family:'Playfair Display',serif;font-size:30px;color:var(--gold);font-weight:700">18%</div>
+            <div style="font-size:10px;color:var(--gray4);margin-top:3px">Too early</div>
+          </div>
+          <div style="flex:1;text-align:center;background:rgba(138,155,184,0.08);border-radius:8px;padding:14px 6px">
+            <div style="font-family:'Playfair Display',serif;font-size:30px;color:var(--gray4);font-weight:700">35%</div>
+            <div style="font-size:10px;color:var(--gray4);margin-top:3px">No change</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Row 5: Productivity impact + Adjustment freq -->
+  <div class="g2">
+    <div class="card">
+      <div class="card-body">
+        <div class="card-label">Productivity Impact if Removed (Q17)</div>
+        <div class="bar-row"><div class="bar-lbl w150">Moderate Impact</div><div class="bar-track"><div class="bar-fill f-navy" style="width:88%"></div></div><div class="bar-pct">88%</div><div class="bar-count">30 of 34</div></div>
+        <div class="bar-row"><div class="bar-lbl w150">High Impact</div><div class="bar-track"><div class="bar-fill f-blue1" style="width:6%"></div></div><div class="bar-pct">6%</div><div class="bar-count">2 of 34</div></div>
+        <div class="bar-row"><div class="bar-lbl w150">Low Impact</div><div class="bar-track"><div class="bar-fill f-gray" style="width:6%"></div></div><div class="bar-pct">6%</div><div class="bar-count">2 of 34</div></div>
+        <div class="bar-row"><div class="bar-lbl w150">No Impact</div><div class="bar-track"><div class="bar-fill f-gray" style="width:0%"></div></div><div class="bar-pct">0%</div><div class="bar-count">0 of 34</div></div>
+        <div class="tags"><span class="tag t-blue">94% feel moderate–high impact</span></div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-body">
+        <div class="card-label">Conversation Adjustment from AI Insights (Q6)</div>
+        <div class="bar-row"><div class="bar-lbl w150">Sometimes adjust</div><div class="bar-track"><div class="bar-fill f-blue1" style="width:74%"></div></div><div class="bar-pct">74%</div><div class="bar-count">25 of 34</div></div>
+        <div class="bar-row"><div class="bar-lbl w150">Often adjust</div><div class="bar-track"><div class="bar-fill f-blue2" style="width:12%"></div></div><div class="bar-pct">12%</div><div class="bar-count">4 of 34</div></div>
+        <div class="bar-row"><div class="bar-lbl w150">Never adjust</div><div class="bar-track"><div class="bar-fill f-gray" style="width:15%"></div></div><div class="bar-pct">15%</div><div class="bar-count">5 of 34</div></div>
+        <div class="tags"><span class="tag t-blue">86% adjust at least sometimes</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="insight">
+    <div class="insight-ico">💡</div>
+    <div>
+      <div class="insight-title">Executive Summary</div>
+      <div class="insight-text" contenteditable="false">94% of the team proactively reviews past conversations before client meetings, and 100% believe better recall leads to better outcomes — unanimous conviction with zero dissent. Among the 65% who have adopted the AI tool, every single user reports positive conversion impact, with accuracy rated 7.5/10 and personalisation 7.3/10. The 35% non-adoption gap (12 of 34 respondents) remains the single largest growth lever. 94% would feel moderate–high productivity impact if the tool were removed, confirming deep workflow integration. Top concern is accuracy (41%), balanced equally by those with no concerns at all (41%).</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- TAB 01: REVIEW HABITS                                       -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<div class="panel" id="t1">
+  <div class="panel-header">
+    <div class="panel-header-left">
+      <div class="panel-eyebrow">01 · Review Habits & Time Saved</div>
+      <div class="panel-title">Conversation Review Before Meetings</div>
+      <div class="panel-question">Do you review past client conversations before meetings? How much time do you save?</div>
+    </div>
+    <div class="panel-n">n = 34</div>
+  </div>
+  <div class="g2 gwide">
+    <div class="card">
+      <div class="card-body">
+        <div class="card-label">Do you review past conversations? (Q2)</div>
+        <div class="donut-wrap">
+          <svg width="130" height="130" viewBox="0 0 130 130">
+            <circle cx="65" cy="65" r="50" fill="none" stroke="var(--gray2)" stroke-width="18"/>
+            <circle cx="65" cy="65" r="50" fill="none" stroke="var(--blue2)" stroke-width="18"
+              stroke-dasharray="295.3 314.16" stroke-dashoffset="78.54" stroke-linecap="round"/>
+            <text x="65" y="60" text-anchor="middle" font-family="Playfair Display,serif" font-size="22" fill="var(--blue2)" font-weight="700">94%</text>
+            <text x="65" y="78" text-anchor="middle" font-family="Inter,sans-serif" font-size="10" fill="#8A9BB8">Yes</text>
+          </svg>
+          <div class="donut-legend">
+            <div class="donut-li"><div class="donut-dot" style="background:var(--blue2)"></div>Yes — always review<span class="donut-pct">94%</span></div>
+            <div class="donut-li"><div class="donut-dot" style="background:var(--gray3)"></div>No / Skip<span class="donut-pct">6%</span></div>
+            <div style="margin-top:12px;padding-top:12px;border-top:1px solid var(--gray2);font-size:12px;color:var(--gray4)">32 of 34 respondents prepare by reviewing before every client meeting.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-body">
+        <div class="card-label">Average time saved per meeting prep (Q3)</div>
+        <div class="bar-row"><div class="bar-lbl">Less than 5 min</div><div class="bar-track"><div class="bar-fill f-blue4" style="width:18%"></div></div><div class="bar-pct">18%</div><div class="bar-count">6 of 34</div></div>
+        <div class="bar-row"><div class="bar-lbl">5 – 10 minutes</div><div class="bar-track"><div class="bar-fill f-blue2" style="width:59%"></div></div><div class="bar-pct">59%</div><div class="bar-count">20 of 34</div></div>
+        <div class="bar-row"><div class="bar-lbl">10 – 20 minutes</div><div class="bar-track"><div class="bar-fill f-blue1" style="width:21%"></div></div><div class="bar-pct">21%</div><div class="bar-count">7 of 34</div></div>
+        <div class="bar-row"><div class="bar-lbl">More than 20 min</div><div class="bar-track"><div class="bar-fill f-navy" style="width:3%"></div></div><div class="bar-pct">3%</div><div class="bar-count">1 of 34</div></div>
+        <div class="tags"><span class="tag t-blue">59% save 5–10 min per session</span><span class="tag t-navy">21% save 10–20 min</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="insight">
+    <div class="insight-ico">⏱</div>
+    <div>
+      <div class="insight-title">Preparation Culture is Strong</div>
+      <div class="insight-text" contenteditable="false">94% of the team reviews past conversations before meetings — a deeply embedded preparation habit. 59% save 5–10 minutes per session, while 21% now save 10–20 minutes as familiarity with the tool grows. Compounded across hundreds of client meetings monthly, this represents significant time and quality ROI.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- TAB 02: RECALL GAPS                                         -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<div class="panel" id="t2">
+  <div class="panel-header">
+    <div class="panel-header-left">
+      <div class="panel-eyebrow">02 · Missed Signals & Recall Gaps</div>
+      <div class="panel-title">What Gets Forgotten Before Client Meetings</div>
+      <div class="panel-question">How often do you miss opportunities? What information is hardest to recall?</div>
+    </div>
+    <div class="panel-n">n = 34</div>
+  </div>
+  <div class="g4" style="margin-bottom:18px">
+    <div class="kpi c-blue1"><div class="kpi-num">53%</div><div class="kpi-label">Rarely miss opportunities</div><div class="kpi-sub">18 of 34 respondents</div></div>
+    <div class="kpi c-gold"><div class="kpi-num">38%</div><div class="kpi-label">Sometimes miss opportunities</div><div class="kpi-sub">13 of 34 respondents</div></div>
+    <div class="kpi c-sage"><div class="kpi-num">9%</div><div class="kpi-label">Never miss opportunities</div><div class="kpi-sub">3 of 34 respondents</div></div>
+    <div class="kpi c-rose"><div class="kpi-num">0%</div><div class="kpi-label">Often miss opportunities</div><div class="kpi-sub">0 of 34 respondents</div></div>
+  </div>
+  <div class="card">
+    <div class="card-body">
+      <div class="card-label">Information most difficult to recall before meetings (Q5) — multi-select</div>
+      <div class="bar-row"><div class="bar-lbl w220">Investment Risk / Rationale</div><div class="bar-track"><div class="bar-fill f-navy" style="width:41%"></div></div><div class="bar-pct">41%</div><div class="bar-count">14 of 34</div></div>
+      <div class="bar-row"><div class="bar-lbl w220">Life Events / Personal Context</div><div class="bar-track"><div class="bar-fill f-blue1" style="width:26%"></div></div><div class="bar-pct">26%</div><div class="bar-count">9 of 34</div></div>
+      <div class="bar-row"><div class="bar-lbl w220">Past Product Discussions</div><div class="bar-track"><div class="bar-fill f-blue2" style="width:24%"></div></div><div class="bar-pct">24%</div><div class="bar-count">8 of 34</div></div>
+      <div class="bar-row"><div class="bar-lbl w220">Objections Raised Earlier</div><div class="bar-track"><div class="bar-fill f-blue3" style="width:21%"></div></div><div class="bar-pct">21%</div><div class="bar-count">7 of 34</div></div>
+    </div>
+  </div>
+  <div class="insight">
+    <div class="insight-ico">🎯</div>
+    <div>
+      <div class="insight-title">Strategic Priority for AI Summary Design</div>
+      <div class="insight-text" contenteditable="false">Investment risk rationale (41%) and life events (26%) are the top recall blind spots — the high-context, personalised signals that differentiate great advisory conversations from average ones. AI summaries should surface these categories first. Note: 38% of the team sometimes misses opportunities, not "nearly half" — an important distinction. Zero respondents report often missing signals, which is a strong baseline.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- TAB 03: BELIEF & ADJUSTMENT                                 -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<div class="panel" id="t3">
+  <div class="panel-header">
+    <div class="panel-header-left">
+      <div class="panel-eyebrow">03 · Belief in Recall & Conversation Adjustment</div>
+      <div class="panel-title">Team Conviction & Behavioural Change</div>
+      <div class="panel-question">Do you believe better recall improves outcomes? How often do you adjust based on AI insights?</div>
+    </div>
+    <div class="panel-n">n = 34</div>
+  </div>
+  <div class="band" style="margin-bottom:18px">
+    <div class="band-num">100%</div>
+    <div class="band-body">
+      <div class="band-title">Universal Buy-in — Zero Dissent</div>
+      <div class="band-desc">Every single respondent — all 34 — believes that better recall leads to better client outcomes. 62% believe it significantly (21 people), 38% marginally (13 people). This is the strongest possible internal validation signal for continued AI investment.</div>
+      <div class="band-stats">
+        <div class="band-s"><span class="v">62%</span><span class="l">Significantly (21 people)</span></div>
+        <div class="band-s"><span class="v">38%</span><span class="l">Marginally (13 people)</span></div>
+        <div class="band-s"><span class="v">0%</span><span class="l">Disagree (0 people)</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-body">
+      <div class="card-label">How often do you adjust conversations based on AI insights? (Q6)</div>
+      <div class="bar-row"><div class="bar-lbl">Often</div><div class="bar-track"><div class="bar-fill f-blue1" style="width:12%"></div></div><div class="bar-pct">12%</div><div class="bar-count">4 of 34</div></div>
+      <div class="bar-row"><div class="bar-lbl">Sometimes</div><div class="bar-track"><div class="bar-fill f-blue2" style="width:74%"></div></div><div class="bar-pct">74%</div><div class="bar-count">25 of 34</div></div>
+      <div class="bar-row"><div class="bar-lbl">Never</div><div class="bar-track"><div class="bar-fill f-gray" style="width:15%"></div></div><div class="bar-pct">15%</div><div class="bar-count">5 of 34</div></div>
+      <div class="tags"><span class="tag t-blue">86% adjust at least sometimes</span><span class="tag t-navy">Only 15% never adjust</span></div>
+    </div>
+  </div>
+  <div class="insight">
+    <div class="insight-ico">✨</div>
+    <div>
+      <div class="insight-title">Belief Converts to Behaviour</div>
+      <div class="insight-text" contenteditable="false">100% belief in recall's value translates directly into action — 86% are already adjusting their client conversations based on AI insights. The 15% who never adjust likely overlap with non-adopters. Closing the adoption gap would almost certainly raise this adjustment rate further.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- TAB 04: AI ADOPTION                                         -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<div class="panel" id="t4">
+  <div class="panel-header">
+    <div class="panel-header-left">
+      <div class="panel-eyebrow">04 · AI Tool Adoption</div>
+      <div class="panel-title">Who Has Used the AI Summary Tool?</div>
+      <div class="panel-question">Have you used the AI summary tool before a client meeting? (Q8)</div>
+    </div>
+    <div class="panel-n">n = 34</div>
+  </div>
+  <div class="g2">
+    <div class="card">
+      <div class="card-body">
+        <div class="card-label">Adoption split</div>
+        <div class="donut-wrap">
+          <svg width="130" height="130" viewBox="0 0 130 130">
+            <circle cx="65" cy="65" r="50" fill="none" stroke="var(--gray2)" stroke-width="18"/>
+            <circle cx="65" cy="65" r="50" fill="none" stroke="var(--blue2)" stroke-width="18"
+              stroke-dasharray="204.2 314.16" stroke-dashoffset="78.54" stroke-linecap="round"/>
+            <text x="65" y="60" text-anchor="middle" font-family="Playfair Display,serif" font-size="22" fill="var(--blue2)" font-weight="700">65%</text>
+            <text x="65" y="78" text-anchor="middle" font-family="Inter,sans-serif" font-size="10" fill="#8A9BB8">Adopted</text>
+          </svg>
+          <div class="donut-legend">
+            <div class="donut-li"><div class="donut-dot" style="background:var(--blue2)"></div>Yes — used the tool<span class="donut-pct">65%</span></div>
+            <div class="donut-li"><div class="donut-dot" style="background:var(--gray3)"></div>No — not yet<span class="donut-pct">35%</span></div>
+            <div style="margin-top:12px;padding-top:12px;border-top:1px solid var(--gray2);font-size:12px;color:var(--gray4)">22 of 34 respondents have used the AI tool. 12 respondents (35%) represent the key onboarding opportunity.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-body">
+        <div class="card-label">Adoption gap analysis</div>
+        <div style="display:flex;flex-direction:column;gap:14px;margin-top:6px">
+          <div style="background:rgba(30,95,168,0.07);border:1px solid rgba(30,95,168,0.18);border-radius:8px;padding:16px">
+            <div style="font-family:'Playfair Display',serif;font-size:30px;color:var(--blue2);margin-bottom:4px;font-weight:700">22 adopted</div>
+            <div style="font-size:12px;color:var(--gray5);font-weight:500">Reporting 7.5/10 accuracy · 100% positive conversion impact</div>
+          </div>
+          <div style="background:rgba(192,74,85,0.06);border:1px solid rgba(192,74,85,0.18);border-radius:8px;padding:16px">
+            <div style="font-family:'Playfair Display',serif;font-size:30px;color:var(--rose);margin-bottom:4px;font-weight:700">12 not yet</div>
+            <div style="font-size:12px;color:var(--gray5);font-weight:500">Still preparing manually — clear onboarding & coaching opportunity</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="insight">
+    <div class="insight-ico">📈</div>
+    <div>
+      <div class="insight-title">35% Adoption Gap = Largest Single Growth Lever</div>
+      <div class="insight-text" contenteditable="false">65% of the team has adopted the AI tool, and every adopter reports positive impact. The 12 non-adopters (35%) still prepare manually — they haven't rejected the tool, they just haven't started. A structured onboarding push targeting this cohort would immediately expand the ROI footprint of the existing investment with no additional tool cost.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- TAB 05: PERFORMANCE SCORES                                  -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<div class="panel" id="t5">
+  <div class="panel-header">
+    <div class="panel-header-left">
+      <div class="panel-eyebrow">05 · AI Performance Scores</div>
+      <div class="panel-title">Accuracy, Personalisation & Comfort Ratings</div>
+      <div class="panel-question">Q9–Q10, Q12, Q14 — rated by the 22 AI tool users (Q14 by all 33 valid respondents)</div>
+    </div>
+    <div class="panel-n">AI users: n = 22</div>
+  </div>
+  <div class="g3" style="margin-bottom:18px">
+    <div class="card">
+      <div class="card-body" style="text-align:center">
+        <div class="card-label">Accuracy of AI Summary (Q9)</div>
+        <div class="score-big" style="color:var(--blue2)">7.5<span class="score-denom">/10</span></div>
+        <div class="score-bar-track"><div class="score-bar-fill" style="width:75%;background:var(--blue2)"></div></div>
+        <div class="score-note">Average across 22 AI tool users · Range: 5–9</div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-body" style="text-align:center">
+        <div class="card-label">Pitch Personalisation (Q10)</div>
+        <div class="score-big" style="color:var(--blue3)">7.3<span class="score-denom">/10</span></div>
+        <div class="score-bar-track"><div class="score-bar-fill" style="width:73%;background:var(--blue3)"></div></div>
+        <div class="score-note">Average across 21 AI tool users · Accuracy (7.5) is higher than personalisation (7.3)</div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-body" style="text-align:center">
+        <div class="card-label">Comfort Relying on AI (Q12)</div>
+        <div class="score-big" style="color:var(--blue4)">6.9<span class="score-denom">/10</span></div>
+        <div class="score-bar-track"><div class="score-bar-fill" style="width:69%;background:var(--blue4)"></div></div>
+        <div class="score-note">Average across 22 AI tool users · Lowest score — rises with familiarity</div>
+      </div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-body">
+      <div class="card-label">Client engagement / trust increase — score distribution (Q14 · all respondents · avg 7.1/10)</div>
+      <div class="wfall">
+        <div class="wc"><div class="wv">1</div><div class="wb" style="height:8px;background:var(--gray3)"></div><div class="wl">Score 4</div></div>
+        <div class="wc"><div class="wv">5</div><div class="wb" style="height:50px;background:var(--blue5)"></div><div class="wl">Score 5</div></div>
+        <div class="wc"><div class="wv">4</div><div class="wb" style="height:40px;background:var(--blue4)"></div><div class="wl">Score 6</div></div>
+        <div class="wc"><div class="wv">9</div><div class="wb" style="height:90px;background:var(--blue3)"></div><div class="wl">Score 7</div></div>
+        <div class="wc"><div class="wv">9</div><div class="wb" style="height:90px;background:var(--blue2)"></div><div class="wl">Score 8</div></div>
+        <div class="wc"><div class="wv">4</div><div class="wb" style="height:40px;background:var(--blue1)"></div><div class="wl">Score 9</div></div>
+        <div class="wc"><div class="wv">1</div><div class="wb" style="height:10px;background:var(--navy)"></div><div class="wl">Score 10</div></div>
+      </div>
+    </div>
+  </div>
+  <div class="insight">
+    <div class="insight-ico">📊</div>
+    <div>
+      <div class="insight-title">Scores Show Healthy Maturity — Room to Grow</div>
+      <div class="insight-text" contenteditable="false">Accuracy (7.5/10) and personalisation (7.3/10) are closely aligned across 22 AI tool users, with accuracy scoring slightly higher — the tool is stronger at factual recall than contextual tailoring. Comfort (6.9) being the lowest score is expected at this adoption stage and typically rises with repeated use. Client engagement averages 7.1/10 across all respondents, with scores 7 and 8 being the modal cluster (18 of 33 valid responses).</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- TAB 06: CONVERSION & QUALITY                                -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<div class="panel" id="t6">
+  <div class="panel-header">
+    <div class="panel-header-left">
+      <div class="panel-eyebrow">06 · Conversion Rate & Conversation Quality</div>
+      <div class="panel-title">Impact on Business Outcomes</div>
+      <div class="panel-question">Q11 & Q13 — Since using the tool, how has your conversion rate and conversation quality changed?</div>
+    </div>
+    <div class="panel-n">AI users: n = 22</div>
+  </div>
+  <div class="g2">
+    <div class="card">
+      <div class="card-body">
+        <div class="card-label">Client conversion rate change (Q11) — 22 AI users</div>
+        <div class="bar-row"><div class="bar-lbl">Improved Significantly</div><div class="bar-track"><div class="bar-fill f-navy" style="width:32%"></div></div><div class="bar-pct">32%</div><div class="bar-count">7 of 22</div></div>
+        <div class="bar-row"><div class="bar-lbl">Improved Slightly</div><div class="bar-track"><div class="bar-fill f-blue2" style="width:68%"></div></div><div class="bar-pct">68%</div><div class="bar-count">15 of 22</div></div>
+        <div class="bar-row"><div class="bar-lbl">No Change</div><div class="bar-track"><div class="bar-fill f-gray" style="width:0%"></div></div><div class="bar-pct">0%</div><div class="bar-count">0 of 22</div></div>
+        <div class="tags"><span class="tag t-sage">100% positive — zero no-change responses</span></div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-body">
+        <div class="card-label">Conversation quality & depth change (Q13) — 21 AI users</div>
+        <div class="bar-row"><div class="bar-lbl">Improved Significantly</div><div class="bar-track"><div class="bar-fill f-blue1" style="width:19%"></div></div><div class="bar-pct">19%</div><div class="bar-count">4 of 21</div></div>
+        <div class="bar-row"><div class="bar-lbl">Improved Slightly</div><div class="bar-track"><div class="bar-fill f-blue3" style="width:76%"></div></div><div class="bar-pct">76%</div><div class="bar-count">16 of 21</div></div>
+        <div class="tags"><span class="tag t-blue">95% report quality improvement</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="insight">
+    <div class="insight-ico">🤝</div>
+    <div>
+      <div class="insight-title">100% Positive Conversion Impact — Zero Exceptions</div>
+      <div class="insight-text" contenteditable="false">100% of the 22 AI tool users report positive conversion rate impact — zero no-change responses. 95% also report improved conversation quality and depth. This dual signal (better conversations → better conversion) validates the tool's entire value chain. The consistent uplift across all AI adopters suggests the tool is delivering reliable, not just occasional, performance gains.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- TAB 07: CROSS-SELL (PIE CHART — multi-colour)              -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<div class="panel" id="t7">
+  <div class="panel-header">
+    <div class="panel-header-left">
+      <div class="panel-eyebrow">07 · Cross-Sell & Upsell Opportunities</div>
+      <div class="panel-title">Revenue Expansion from AI-Assisted Conversations</div>
+      <div class="panel-question">Have you seen an increase in cross-sell or upsell opportunities? (Q15)</div>
+    </div>
+    <div class="panel-n">n = 34</div>
+  </div>
+  <div class="g2">
+    <div class="card">
+      <div class="card-body">
+        <div class="card-label">Cross-sell / upsell increase observed</div>
+        <!-- Multi-colour pie: navy=47%, blue3=18%, gray3=35% -->
+        <!-- Circumference=314.16, offsets cumulative from top (dashoffset=78.54) -->
+        <!-- Slice 1 navy 47%=147.66 starts at 78.54 -->
+        <!-- Slice 2 blue3 18%=56.55 starts at 78.54-147.66= -69.12 mod 314.16 = 245.04 -->
+        <!-- Slice 3 gray3 35%=109.96 fills remainder -->
+        <div class="donut-wrap">
+          <svg width="140" height="140" viewBox="0 0 140 140">
+            <circle cx="70" cy="70" r="54" fill="none" stroke="var(--gray2)" stroke-width="22"/>
+            <!-- Navy: 47% -->
+            <circle cx="70" cy="70" r="54" fill="none" stroke="var(--navy)" stroke-width="22"
+              stroke-dasharray="159.3 339.3" stroke-dashoffset="84.8" stroke-linecap="butt"/>
+            <!-- Blue3: 18% -->
+            <circle cx="70" cy="70" r="54" fill="none" stroke="var(--blue3)" stroke-width="22"
+              stroke-dasharray="61.1 339.3" stroke-dashoffset="-74.5" stroke-linecap="butt"/>
+            <!-- Blue5: 35% -->
+            <circle cx="70" cy="70" r="54" fill="none" stroke="var(--blue5)" stroke-width="22"
+              stroke-dasharray="118.8 339.3" stroke-dashoffset="-135.6" stroke-linecap="butt"/>
+            <text x="70" y="65" text-anchor="middle" font-family="Playfair Display,serif" font-size="22" fill="var(--navy)" font-weight="700">47%</text>
+            <text x="70" y="83" text-anchor="middle" font-family="Inter,sans-serif" font-size="10" fill="#8A9BB8">Yes</text>
+          </svg>
+          <div class="donut-legend">
+            <div class="donut-li"><div class="donut-dot" style="background:var(--navy)"></div>Yes — seen increase<span class="donut-pct">47%</span></div>
+            <div class="donut-li"><div class="donut-dot" style="background:var(--blue3)"></div>Too early to tell<span class="donut-pct">18%</span></div>
+            <div class="donut-li"><div class="donut-dot" style="background:var(--blue5)"></div>No increase seen<span class="donut-pct">35%</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-body">
+        <div class="card-label">Reading the numbers</div>
+        <div style="display:flex;flex-direction:column;gap:13px;margin-top:6px">
+          <div style="display:flex;gap:14px;align-items:flex-start">
+            <div style="font-family:'Playfair Display',serif;font-size:28px;color:var(--navy);line-height:1;flex-shrink:0;font-weight:700">16</div>
+            <div><div style="font-size:13px;font-weight:600;color:var(--navy);margin-bottom:3px">Already seeing results</div><div style="font-size:12px;color:var(--gray4)">47% confirm cross-sell opportunities are increasing</div></div>
+          </div>
+          <div style="display:flex;gap:14px;align-items:flex-start">
+            <div style="font-family:'Playfair Display',serif;font-size:28px;color:var(--blue3);line-height:1;flex-shrink:0;font-weight:700">6</div>
+            <div><div style="font-size:13px;font-weight:600;color:var(--navy);margin-bottom:3px">Still early</div><div style="font-size:12px;color:var(--gray4)">18% say too early — pipeline may still be building</div></div>
+          </div>
+          <div style="display:flex;gap:14px;align-items:flex-start">
+            <div style="font-family:'Playfair Display',serif;font-size:28px;color:var(--gray4);line-height:1;flex-shrink:0;font-weight:700">12</div>
+            <div><div style="font-size:13px;font-weight:600;color:var(--navy);margin-bottom:3px">No impact yet</div><div style="font-size:12px;color:var(--gray4)">35% not yet seeing cross-sell impact — likely overlaps with non-adopters</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="insight">
+    <div class="insight-ico">💰</div>
+    <div>
+      <div class="insight-title">47% Already Seeing Revenue Expansion</div>
+      <div class="insight-text" contenteditable="false">47% of the team already sees cross-sell and upsell opportunities increasing due to AI-assisted conversations. 18% are still in early stages, meaning the potential pool reporting positive impact could grow to 65% over time. The 35% seeing no impact almost certainly overlaps with the 35% who haven't yet adopted the tool — making this a direct onboarding opportunity.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- TAB 08: CONCERNS                                            -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<div class="panel" id="t8">
+  <div class="panel-header">
+    <div class="panel-header-left">
+      <div class="panel-eyebrow">08 · Concerns About Using the Tool</div>
+      <div class="panel-title">Risk Perception & Hesitancy Factors</div>
+      <div class="panel-question">What concerns do you have? (Q16) — multi-select, % of 34 respondents</div>
+    </div>
+    <div class="panel-n">n = 34</div>
+  </div>
+  <div class="card" style="margin-bottom:18px">
+    <div class="card-body">
+      <div class="card-label">Concern distribution</div>
+      <div class="bar-row"><div class="bar-lbl w220">Accuracy of summaries</div><div class="bar-track"><div class="bar-fill f-rose" style="width:41%"></div></div><div class="bar-pct">41%</div><div class="bar-count">14 of 34</div></div>
+      <div class="bar-row"><div class="bar-lbl w220">No concerns at all</div><div class="bar-track"><div class="bar-fill f-sage" style="width:41%"></div></div><div class="bar-pct">41%</div><div class="bar-count">14 of 34</div></div>
+      <div class="bar-row"><div class="bar-lbl w220">Over-dependence on AI</div><div class="bar-track"><div class="bar-fill f-gold" style="width:35%"></div></div><div class="bar-pct">35%</div><div class="bar-count">12 of 34</div></div>
+      <div class="bar-row"><div class="bar-lbl w220">Data privacy</div><div class="bar-track"><div class="bar-fill f-blue1" style="width:29%"></div></div><div class="bar-pct">29%</div><div class="bar-count">10 of 34</div></div>
+      <div class="bar-row"><div class="bar-lbl w220">Compliance risk</div><div class="bar-track"><div class="bar-fill f-gray" style="width:15%"></div></div><div class="bar-pct">15%</div><div class="bar-count">5 of 34</div></div>
+    </div>
+  </div>
+  <div class="g2">
+    <div class="insight" style="margin-top:0">
+      <div class="insight-ico">⚠️</div>
+      <div>
+        <div class="insight-title">Top Risk: Accuracy (41%)</div>
+        <div class="insight-text" contenteditable="false">41% flag accuracy as a concern — the same proportion that report no concerns at all. This polarised but equal split suggests the team isn't uniformly sceptical. Investing in model validation and surfacing accuracy confidence metrics in-app can directly address hesitancy in the concerned cohort.</div>
+      </div>
+    </div>
+    <div class="insight" style="margin-top:0">
+      <div class="insight-ico">🔒</div>
+      <div>
+        <div class="insight-title">Privacy & Compliance (29%–15%)</div>
+        <div class="insight-text" contenteditable="false">Data privacy (29%) and compliance (15%) concerns are present but at manageable levels. Clear data handling policies, audit trails, and regular governance communications are the recommended path to reducing these figures over subsequent survey cycles.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- TAB 09: PRODUCTIVITY IMPACT                                 -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<div class="panel" id="t9">
+  <div class="panel-header">
+    <div class="panel-header-left">
+      <div class="panel-eyebrow">09 · Productivity Impact if Tool Removed</div>
+      <div class="panel-title">Tool Stickiness & Workflow Integration</div>
+      <div class="panel-question">If this tool were removed tomorrow, how much would it impact your productivity? (Q17)</div>
+    </div>
+    <div class="panel-n">n = 34</div>
+  </div>
+  <div class="band" style="margin-bottom:18px">
+    <div class="band-num">94%</div>
+    <div class="band-body">
+      <div class="band-title">The Tool is Deeply Embedded</div>
+      <div class="band-desc">94% of respondents (32 of 34) say they would feel moderate to high productivity impact if the tool were removed. This signals healthy dependency — the tool is embedded in daily workflow without triggering over-reliance concerns for most.</div>
+      <div class="band-stats">
+        <div class="band-s"><span class="v">6%</span><span class="l">High Impact (2 people)</span></div>
+        <div class="band-s"><span class="v">88%</span><span class="l">Moderate Impact (30 people)</span></div>
+        <div class="band-s"><span class="v">6%</span><span class="l">Low Impact (2 people)</span></div>
+        <div class="band-s"><span class="v">0%</span><span class="l">No Impact</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-body">
+      <div class="card-label">Impact breakdown</div>
+      <div class="bar-row"><div class="bar-lbl w220">High Impact</div><div class="bar-track"><div class="bar-fill f-navy" style="width:6%"></div></div><div class="bar-pct">6%</div><div class="bar-count">2 of 34</div></div>
+      <div class="bar-row"><div class="bar-lbl w220">Moderate Impact</div><div class="bar-track"><div class="bar-fill f-blue1" style="width:88%"></div></div><div class="bar-pct">88%</div><div class="bar-count">30 of 34</div></div>
+      <div class="bar-row"><div class="bar-lbl w220">Low Impact</div><div class="bar-track"><div class="bar-fill f-blue4" style="width:6%"></div></div><div class="bar-pct">6%</div><div class="bar-count">2 of 34</div></div>
+      <div class="bar-row"><div class="bar-lbl w220">No Impact</div><div class="bar-track"><div class="bar-fill f-gray" style="width:0%"></div></div><div class="bar-pct">0%</div><div class="bar-count">0 of 34</div></div>
+      <div class="tags"><span class="tag t-blue">94% moderate–high impact · 0% no impact</span></div>
+    </div>
+  </div>
+  <div class="insight">
+    <div class="insight-ico">🚀</div>
+    <div>
+      <div class="insight-title">High Stickiness — Tool is Mission-Critical for Most</div>
+      <div class="insight-text" contenteditable="false">88% report moderate productivity impact if removed — the dominant response by far. Combined with the 6% who say high impact, 94% of the team would notice meaningful disruption if the tool disappeared tomorrow. Zero respondents say no impact. This is the clearest signal of tool integration success, and provides a strong business case for continued investment and expansion.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- TAB 10: SUGGESTIONS                                         -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<div class="panel" id="t10">
+  <div class="panel-header">
+    <div class="panel-header-left">
+      <div class="panel-eyebrow">10 · Improvement Suggestions</div>
+      <div class="panel-title">What the Team Wants Next</div>
+      <div class="panel-question">What other improvements would you love to see to make the tool more holistic? (Q18)</div>
+    </div>
+    <div class="panel-n">n = 34</div>
+  </div>
+  <div class="g3" style="margin-bottom:18px">
+    <div class="card"><div class="card-body">
+      <div class="card-label">CRM & Integration</div>
+      <div style="font-family:'Playfair Display',serif;font-size:19px;color:var(--navy);margin-bottom:10px;font-weight:600">Deeper CRM Sync</div>
+      <div style="font-size:13px;color:var(--gray5);line-height:1.7">Real-time insights during meetings, deeper CRM integration, and automatic surfacing of key client signals and buying intent.</div>
+      <div class="tags"><span class="tag t-blue">CRM</span><span class="tag t-navy">Real-time</span></div>
+    </div></div>
+    <div class="card"><div class="card-body">
+      <div class="card-label">Memory & Context</div>
+      <div style="font-family:'Playfair Display',serif;font-size:19px;color:var(--navy);margin-bottom:10px;font-weight:600">Smart Client Memory</div>
+      <div style="font-size:13px;color:var(--gray5);line-height:1.7">Persistent memory of client goals and past decisions, automatic follow-up tracking, and pattern detection across client histories.</div>
+      <div class="tags"><span class="tag t-blue">Memory</span><span class="tag t-blue">Follow-ups</span></div>
+    </div></div>
+    <div class="card"><div class="card-body">
+      <div class="card-label">Analytics</div>
+      <div style="font-family:'Playfair Display',serif;font-size:19px;color:var(--navy);margin-bottom:10px;font-weight:600">Pattern Detection</div>
+      <div style="font-size:13px;color:var(--gray5);line-height:1.7">Monthly pattern detection summaries, proactive alerts for at-risk clients, and AI-generated insights based on behavioural signals.</div>
+      <div class="tags"><span class="tag t-navy">Analytics</span><span class="tag t-navy">Alerts</span></div>
+    </div></div>
+    <div class="card"><div class="card-body">
+      <div class="card-label">Workflow</div>
+      <div style="font-family:'Playfair Display',serif;font-size:19px;color:var(--navy);margin-bottom:10px;font-weight:600">Action Tracking</div>
+      <div style="font-size:13px;color:var(--gray5);line-height:1.7">Automated action tracking with reminders, accountability logs, and structured call remark history to close the loop on every meeting.</div>
+      <div class="tags"><span class="tag t-blue">Accountability</span><span class="tag t-blue">Tasks</span></div>
+    </div></div>
+    <div class="card"><div class="card-body">
+      <div class="card-label">Customisation</div>
+      <div style="font-family:'Playfair Display',serif;font-size:19px;color:var(--navy);margin-bottom:10px;font-weight:600">Personalised Dashboard</div>
+      <div style="font-size:13px;color:var(--gray5);line-height:1.7">Customisable summary formats, notification workflows, and AI-generated insights tailored to each advisor's individual client portfolio.</div>
+      <div class="tags"><span class="tag t-gold">Custom</span><span class="tag t-gold">Dashboard</span></div>
+    </div></div>
+    <div class="card"><div class="card-body">
+      <div class="card-label">Reflection & Growth</div>
+      <div style="font-family:'Playfair Display',serif;font-size:19px;color:var(--navy);margin-bottom:10px;font-weight:600">Weekly Prompts</div>
+      <div style="font-size:13px;color:var(--gray5);line-height:1.7">Weekly guided reflection prompts and monthly digest summaries to help advisors spot trends in their own advisory patterns over time.</div>
+      <div class="tags"><span class="tag t-blue">Reflection</span><span class="tag t-blue">Prompts</span></div>
+    </div></div>
+  </div>
+  <div class="quote-grid">
+    <div class="quote-card"><div class="quote-mark">"</div><div class="quote-text">Higher accuracy in summaries, deeper CRM integration, and real-time insights during meetings would make this a complete solution.</div></div>
+    <div class="quote-card"><div class="quote-mark">"</div><div class="quote-text">A smart memory that remembers each client's goals and past decisions — and a system that tracks follow-up and risks automatically.</div></div>
+    <div class="quote-card"><div class="quote-mark">"</div><div class="quote-text">Weekly guided reflection prompts and monthly pattern detection summaries — AI-generated insights from my own data.</div></div>
+  </div>
+</div>
+
+<script>
+// ══ TAB SWITCHING ══════════════════════════════════════════════
+const tabBtns = document.querySelectorAll('.tab-btn');
+const panels  = document.querySelectorAll('.panel');
+
+tabBtns.forEach(btn => {
+  btn.addEventListener('click', () => {
+    const target = btn.dataset.tab;
+    tabBtns.forEach(b => b.classList.remove('active'));
+    panels.forEach(p => p.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById(target).classList.add('active');
+    btn.scrollIntoView({behavior:'smooth',block:'nearest',inline:'center'});
+  });
+});
+
+// ══ EDIT & SAVE SYSTEM ═════════════════════════════════════════
+const STORAGE_KEY = 'mo_survey_edits_v1';
+let editMode = false;
+
+function getAllEditables() {
+  return document.querySelectorAll('.insight-text[contenteditable], .panel-title[contenteditable], .panel-eyebrow[contenteditable], [data-editable]');
+}
+
+function getKey(el) {
+  // Build a stable key from panel id + position
+  const panel = el.closest('.panel');
+  const panelId = panel ? panel.id : 'global';
+  const allInPanel = Array.from(panel ? panel.querySelectorAll('[contenteditable]') : document.querySelectorAll('[contenteditable]'));
+  const idx = allInPanel.indexOf(el);
+  return panelId + '_' + idx;
+}
+
+function loadSavedEdits() {
+  try {
+    const saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
+    document.querySelectorAll('[contenteditable]').forEach(el => {
+      const k = getKey(el);
+      if (saved[k] !== undefined) el.innerHTML = saved[k];
+    });
+  } catch(e) {}
+}
+
+function saveEdits() {
+  const data = {};
+  document.querySelectorAll('[contenteditable]').forEach(el => {
+    data[getKey(el)] = el.innerHTML;
+  });
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+  showToast('✓ Changes saved — will persist when you reopen this file in the same browser');
+}
+
+function resetEdits() {
+  if (!confirm('Reset all edits to original text?')) return;
+  localStorage.removeItem(STORAGE_KEY);
+  location.reload();
+}
+
+function toggleEdit() {
+  editMode = !editMode;
+  document.body.classList.toggle('edit-mode-on', editMode);
+  const toggle = document.getElementById('editToggle');
+  toggle.innerHTML = editMode
+    ? '<svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Editing...'
+    : '<svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg> Edit Mode';
+
+  document.querySelectorAll('.insight-text').forEach(el => {
+    el.contentEditable = editMode ? 'true' : 'false';
+  });
+
+  if (!editMode) saveEdits(); // auto-save on exit
+}
+
+// Auto-save on any edit with debounce
+let saveTimer;
+document.addEventListener('input', e => {
+  if (e.target.contentEditable === 'true') {
+    clearTimeout(saveTimer);
+    saveTimer = setTimeout(saveEdits, 1500);
+  }
+});
+
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg || '✓ Saved';
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 3500);
+}
+
+// Load saved edits on page open
+window.addEventListener('DOMContentLoaded', loadSavedEdits);
+</script>
+</body>
+</html>
